@@ -1,0 +1,51 @@
+{
+    /* 
+        tsconfig.json 可写注释，是ts编译器的配置文件，
+        ts编译器可根据它的信息来编译
+    */
+    // 指定哪些需要编译 ** 表示任意目录 * 表示任意文件
+    "include": [
+        "./*"
+    ],
+    // 不需要编译的文件 默认值["node_modules","bower_components","jspm_packages"]
+    "exclude": [
+        "./exclude/**/*"
+    ],
+    // extends 定义被继承的配置文件
+
+    /* 
+        compilerOptions 编译器的选项
+        target 转换的es版本
+    */
+    "compilerOptions": {
+        "target": "ES3",
+        // module 指定要实用的模块化规范
+        // 选项的参数必须为 'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'es2022', 'esnext', 'node12', 'nodenext'。
+        //outFile 旁仅支持 "amd" 和 "system" 模块。
+        "module": "amd",
+        // "lib":[] lib 指定项目中要使用的库
+        // outDir 用来指定编译后文件所在目录
+        "outDir":"./dist",
+        // 设置outFile后，所有代码会合并到同一个文件
+        "outFile":"./dist/app.js",
+        // 是否对JS文件进行编译 默认false
+        "allowJs": false,
+        // 是否检查JS代码是否符合规范，默认false
+        "checkJs": true,
+        // 是否移除注释 默认false
+        "removeComments": false,
+        // 不会生成编译后的JS文件
+        "noEmit": false,
+        // 当有错误时不生成编译后文件
+        "noEmitOnError": false,
+        // 设置严格模式 默认为false
+        "alwaysStrict": true,
+        // 不允许隐式的any
+        "noImplicitAny": true,
+        // 不允许不明确类型的this
+        "noImplicitThis": true,
+        // 严格检查空值
+        "strictNullChecks": true,
+    }
+    
+}
