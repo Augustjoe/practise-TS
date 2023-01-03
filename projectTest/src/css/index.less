@@ -24,6 +24,7 @@ body{
         width: 304px;
         height: 304px;
         border: 2px solid black;
+        position: relative;
     }
     #score-panel{
         width: 300px;
@@ -41,12 +42,24 @@ body{
         }
     }
     #food{
-        width: 10px;
-        height:10px;
-        background-color: black;
         position: absolute;
         left: 100px;
         top: 100px;
+        width: 10px;
+        height: 10px;
+        display: flex;
+        // 横向排列空间不够换行
+        flex-flow: row wrap;
+        // 
+        justify-content: space-between;
+        align-content: space-between;
+
+        &>div{
+            width: 4px;
+            height: 4px;
+            background-color: black;
+            transform: rotate(45deg);
+        }
     }
     
 }
