@@ -7,10 +7,11 @@ class gameControl {
     scorePanal:ScorePanal
     snake:Snake
     direction:String = ''
+    isLive:boolean = true
     constructor(){
         this.food = new Food()
-        this.scorePanal = new ScorePanal()
-        this.snake = new Snake()
+        this.scorePanal = new ScorePanal(10,1)
+        this.snake = new Snake()                                          
         this.init()
     }
     init(){
@@ -39,9 +40,25 @@ class gameControl {
                 x += 10
                 break;
         }
-        this.snake.X = x -1 
-        this.snake.Y = y - 1
-        setTimeout(this.run.bind(this),500-this.scorePanal.level*10)
+        
+        this.checkEat(x,y)
+        try {
+            this.snake.X = x 
+            this.snake.Y = y 
+            
+        } catch (error) {
+            alert('游戏结束')
+            this.isLive = false
+        }
+        
+        this.isLive && setTimeout(this.run.bind(this),300-this.scorePanal.level*20)
+    }
+    checkEat(x:number,y:number){
+        if(this.food.X == x && this.food.Y == y){
+            this.food.change()
+            this.snake.addBody()
+            this.scorePanal.addscore()
+        }
     }
 }
 export default gameControl
