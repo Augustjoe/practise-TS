@@ -57,3 +57,14 @@ let second = [3, 4];
 // 数组展开合并为一个新数组
 let bothPlus = [0, ...first, ...second, 5];
 
+//枚举属性会丢失方法
+class C {
+    p = 12;
+    m() {
+    }
+  }
+  let c1 = new C();
+  let clone = { ...c1 };
+  clone.p; // ok
+//   clone.m(); // error!
+
